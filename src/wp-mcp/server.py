@@ -17,7 +17,4 @@ async def get_latest_posts() -> list:
 
 
 if __name__ == "__main__":
-    if transport == "streamable-http":
-        mcp.run(transport=transport, host="0.0.0.0", port=port)
-    else:
-        mcp.run(transport=transport)
+    mcp.run(transport=transport)
