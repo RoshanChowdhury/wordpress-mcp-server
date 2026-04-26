@@ -7,7 +7,7 @@ Transport = Literal["stdio", "sse", "streamable-http"]
 transport: Transport = os.environ.get("MCP_TRANSPORT", "stdio")  # type: ignore[assignment]
 port = int(os.environ.get("PORT", "8080"))
 
-mcp = FastMCP("WP-Actions")
+mcp = FastMCP("WP-Actions", host="0.0.0.0", port=port)
 
 
 @mcp.tool()
