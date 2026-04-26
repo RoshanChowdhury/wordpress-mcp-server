@@ -9,4 +9,7 @@ COPY src/ src/
 
 EXPOSE 8080
 
+ENV MCP_TRANSPORT=streamable-http \
+    PORT=8080
+
 CMD ["uv", "run", "python", "src/wp-mcp/server.py"]
