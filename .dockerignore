@@ -1,0 +1,6 @@
+.env
+.amazonq/
+*.iml
+__pycache__/
+.venv/
+uv.lock
