@@ -1,7 +1,7 @@
 import os
 from typing import Literal
 from mcp.server.fastmcp import FastMCP
-from utils import get_posts, create_post, update_post, delete_post
+from utils import get_posts, get_categories, create_post, update_post, delete_post
 
 Transport = Literal["stdio", "sse", "streamable-http"]
 transport: Transport = os.environ.get("MCP_TRANSPORT", "stdio")  # type: ignore[assignment]
@@ -44,8 +44,14 @@ async def fetch_posts(
 
 
 @mcp.tool()
+async def get_post_categories() -> list:
+    """Fetch all existing categories from WordPress."""
+    return await get_categories()
+
+
+@mcp.tool()
 async def create_new_post(title: str, content: str, status: str = "draft") -> dict:
-    """Create a new WordPress post. status can be 'draft' or 'publish'."""
+    """Create a new WordPress post. Automatically derives and assigns a category based on content. status to be 'draft' or 'publish'."""
     return await create_post(title, content, status)
 
 

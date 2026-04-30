@@ -7,4 +7,6 @@ dependencies = [
     "mcp",
     "httpx",
     "python-dotenv",
+    "protobuf>=7.34.1",
+    "adk>=0.0.5",
 ]
